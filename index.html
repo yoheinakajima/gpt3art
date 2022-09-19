@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+canvas {
+    background-color: #000;
+}
+</style>
+</head>
+<body>
+
+<canvas id="myCanvas" width="100" height="100"></canvas>
+
+<script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+
+function loop() {
+    for (var i = 0; i < c.width; i++) {
+        for (var j = 0; j < c.height; j++) {
+            var pixel = ctx.getImageData(i, j, 1, 1);
+            var r = pixel.data[0];
+            var g = pixel.data[1];
+            var b = pixel.data[2];
+            var a = pixel.data[3];
+
+            if (Math.random() < -0.01) {
+                // 1% chance of a random neon color
+                ctx.fillStyle = "rgba(" + Math.floor(Math.random() * 255) + ", " + Math.floor(Math.random() * 255) + ", " + Math.floor(Math.random() * 255) + ", 1)";
+            } else {
+                // Otherwise, take the average of the adjacent colors
+                var left = ctx.getImageData(i - 1, j, 1, 1);
+                var right = ctx.getImageData(i + 1, j, 1, 1);
+                var top = ctx.getImageData(i, j - 1, 1, 1);
+                var bottom = ctx.getImageData(i, j + 1, 1, 1);
+
+                var r = (left.data[0] + right.data[0] + top.data[0] + bottom.data[0]) / 4;
+                var g = (left.data[1] + right.data[1] + top.data[1] + bottom.data[1]) / 4;
+                var b = (left.data[2] + right.data[2] + top.data[2] + bottom.data[2]) / 4;
+                var a = (left.data[3] + right.data[3] + top.data[3] + bottom.data[3]) / 4;
+
+                ctx.fillStyle = "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
+            }
+
+            ctx.fillRect(i, j, 1, 1);
+        }
+    }
+
+    setTimeout(loop, 100);
+}
+
+loop();
+
+function getRandomPastelColor() {
+  var r = (Math.round(Math.random() * 127) + 127).toString(16);
+  var g = (Math.round(Math.random() * 127) + 127).toString(16);
+  var b = (Math.round(Math.random() * 127) + 127).toString(16);
+  return '#' + r + g + b;
+}
+
+function getRandomNeonColor() {
+  var colors = ['#FF0080', '#FFBF00', '#FFFF66', '#CCFF00', '#66FF66', '#00FFFF', '#00BFFF', '#FF00FF'];
+  return colors[Math.floor(Math.random() * colors.length)];
+}
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+
+var color1 = getRandomColor();
+var color2 = getRandomColor();
+var color3 = getRandomColor();
+var color4 = getRandomColor();
+var color5 = getRandomColor();
+var color6 = getRandomColor();
+var color7 = getRandomColor();
+var color8 = getRandomColor();
+var color9 = getRandomColor();
+var color10 = getRandomColor();
+
+
+function draw() {
+    ctx.beginPath();
+    ctx.arc(x, y, 5, 0, 2*Math.PI);
+    ctx.fillStyle = color1;
+    ctx.fill();
+    ctx.closePath();
+}
+
+function changeDirection() {
+    dir = dir + (Math.random() * 10 - 5);
+}
+
+var x = Math.floor(Math.random() * 100) + 1;;
+var y = Math.floor(Math.random() * 100) + 1;;
+var dir = 0;
+setInterval(function() {
+    changeDirection();
+    x = x + 5 * Math.cos(dir);
+    y = y + 5 * Math.sin(dir);
+    draw();
+}, 100);
+
+function draw2() {
+    ctx.beginPath();
+    ctx.arc(x2, y2, 5, 0, 2*Math.PI);
+    ctx.fillStyle = color2;
+    ctx.fill();
+    ctx.closePath();
+}
+
+function changeDirection2() {
+    dir = dir + (Math.random() * 10 - 5);
+}
+
+var x2 = Math.floor(Math.random() * 100) + 1;;
+var y2 = Math.floor(Math.random() * 100) + 1;;
+var dir = 0;
+setInterval(function() {
+    changeDirection2();
+    x2 = x2 + 5 * Math.cos(dir);
+    y2 = y2 + 5 * Math.sin(dir);
+    draw2();
+}, 100);
+
+//pink
+function draw3() {
+    ctx.beginPath();
+    ctx.arc(x3, y3, 5, 0, 2*Math.PI);
+    ctx.fillStyle = color3;
+    ctx.fill();
+    ctx.closePath();
+}
+
+function changeDirection3() {
+    dir = dir + (Math.random() * 10 - 5);
+}
+
+var x3 = Math.floor(Math.random() * 100) + 1;;
+var y3 = Math.floor(Math.random() * 100) + 1;;
+var dir = 0;
+setInterval(function() {
+    changeDirection3();
+    x3 = x3 + 5 * Math.cos(dir);
+    y3 = y3 + 5 * Math.sin(dir);
+    draw3();
+}, 100);
+
+//yellow
+function draw4() {
+    ctx.beginPath();
+    ctx.arc(x4, y4, 5, 0, 2*Math.PI);
+    ctx.fillStyle = color4;
+    ctx.fill();
+    ctx.closePath();
+}
+
+function changeDirection4() {
+    dir = dir + (Math.random() * 10 - 5);
+}
+
+var x4 = Math.floor(Math.random() * 100) + 1;;
+var y4 = Math.floor(Math.random() * 100) + 1;;
+var dir = 0;
+setInterval(function() {
+    changeDirection4();
+    x4 = x4 + 5 * Math.cos(dir);
+    y4 = y4 + 5 * Math.sin(dir);
+    draw4();
+}, 100);
+
+//pink
+function draw5() {
+    ctx.beginPath();
+    ctx.arc(x5, y5, 5, 0, 2*Math.PI);
+    ctx.fillStyle = color5;
+    ctx.fill();
+    ctx.closePath();
+}
+
+function changeDirection5() {
+    dir = dir + (Math.random() * 10 - 5);
+}
+
+var x5 = Math.floor(Math.random() * 100) + 1;;
+var y5 = Math.floor(Math.random() * 100) + 1;;
+var dir = 0;
+setInterval(function() {
+    changeDirection5();
+    x5 = x5 + 5 * Math.cos(dir);
+    y5 = y5 + 5 * Math.sin(dir);
+    draw5();
+}, 100);
+
+//yellow
+function draw6() {
+    ctx.beginPath();
+    ctx.arc(x6, y6, 5, 0, 2*Math.PI);
+    ctx.fillStyle = color6;
+    ctx.fill();
+    ctx.closePath();
+}
+
+function changeDirection6() {
+    dir = dir + (Math.random() * 10 - 5);
+}
+
+var x6 = Math.floor(Math.random() * 100) + 1;;
+var y6 = Math.floor(Math.random() * 100) + 1;;
+var dir = 0;
+setInterval(function() {
+    changeDirection6();
+    x6 = x6 + 5 * Math.cos(dir);
+    y6 = y6 + 5 * Math.sin(dir);
+    draw6();
+}, 100);
+
+//pink
+function draw7() {
+    ctx.beginPath();
+    ctx.arc(x7, y7, 5, 0, 2*Math.PI);
+    ctx.fillStyle = color7;
+    ctx.fill();
+    ctx.closePath();
+}
+
+function changeDirection7() {
+    dir = dir + (Math.random() * 10 - 5);
+}
+
+var x7 = Math.floor(Math.random() * 100) + 1;;
+var y7 = Math.floor(Math.random() * 100) + 1;;
+var dir = 0;
+setInterval(function() {
+    changeDirection7();
+    x7 = x7 + 5 * Math.cos(dir);
+    y7 = y7 + 5 * Math.sin(dir);
+    draw7();
+}, 100);
+
+//yellow
+function draw8() {
+    ctx.beginPath();
+    ctx.arc(x8, y8, 5, 0, 2*Math.PI);
+    ctx.fillStyle = color8;
+    ctx.fill();
+    ctx.closePath();
+}
+
+function changeDirection8() {
+    dir = dir + (Math.random() * 10 - 5);
+}
+
+var x8 = Math.floor(Math.random() * 100) + 1;;
+var y8 = Math.floor(Math.random() * 100) + 1;;
+var dir = 0;
+setInterval(function() {
+    changeDirection8();
+    x8 = x8 + 5 * Math.cos(dir);
+    y8 = y8 + 5 * Math.sin(dir);
+    draw8();
+}, 100);
+
+//pink
+function draw9() {
+    ctx.beginPath();
+    ctx.arc(x9, y9, 5, 0, 2*Math.PI);
+    ctx.fillStyle = color9;
+    ctx.fill();
+    ctx.closePath();
+}
+
+function changeDirection9() {
+    dir = dir + (Math.random() * 10 - 5);
+}
+
+var x9 = Math.floor(Math.random() * 100) + 1;;
+var y9 = Math.floor(Math.random() * 100) + 1;;
+var dir = 0;
+setInterval(function() {
+    changeDirection9();
+    x9 = x9 + 5 * Math.cos(dir);
+    y9 = y9 + 5 * Math.sin(dir);
+    draw9();
+}, 100);
+
+//yellow
+function draw10() {
+    ctx.beginPath();
+    ctx.arc(x10, y10, 5, 0, 2*Math.PI);
+    ctx.fillStyle = color10;
+    ctx.fill();
+    ctx.closePath();
+}
+
+function changeDirection10() {
+    dir = dir + (Math.random() * 10 - 5);
+}
+
+var x10 = Math.floor(Math.random() * 100) + 1;;
+var y10 = Math.floor(Math.random() * 100) + 1;;
+var dir = 0;
+setInterval(function() {
+    changeDirection10();
+    x10 = x10 + 5 * Math.cos(dir);
+    y10 = y10 + 5 * Math.sin(dir);
+    draw10();
+}, 100);
+
+</script>
+
+</body>
+</html>
